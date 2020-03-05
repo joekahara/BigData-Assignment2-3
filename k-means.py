@@ -55,6 +55,16 @@ def k_means(df, k):
     return np.reshape(cluster_labels, len(cluster_labels))
 
 
+def silhouette_width(df, k):
+    point_distances = []
+    data = np.array(list(df.values))
+    print(data)
+    '''for i in range(k):
+        if point_distances.append = np.array([data[j] for j in range(len(data)) if labels[j] == i])
+        new_centroids.append(np.mean(datapoints))
+    return None'''
+
+
 # Read heart disease data from CSV
 heart_disease_df = pd.read_csv("data.csv")
 
@@ -63,6 +73,8 @@ normalized_df = (heart_disease_df - heart_disease_df.min()) / (heart_disease_df.
 
 clusters_3 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 3)).values)
 print(clusters_3)
+print("Silhouette width for k = 3: ", silhouette_width(clusters_3, 3), '\n')
 
 clusters_6 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 6)).values)
 print(clusters_6)
+print("Silhouette width for k = 6: ", silhouette_width(clusters_6, 6), '\n')
