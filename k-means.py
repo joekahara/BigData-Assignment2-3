@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from scipy.spatial.distance import cdist
 from copy import deepcopy
 
 
@@ -30,39 +31,63 @@ def get_cluster_labels(distances):
 def recalculate_centroids(data, labels, k):
     new_centroids = []
     for i in range(k):
-        datapoints = np.array([data[j] for j in range(len(data)) if labels[j] == i])
-        new_centroids.append(np.mean(datapoints))
+        cluster_points = np.array([data[j] for j in range(len(data)) if labels[j] == i])
+        new_centroids.append(np.mean(cluster_points))
     return np.array(new_centroids)
 
 
 def k_means(df, k):
     iterations = 0
-
     data = np.array(list(df.values))
-
     centroids = get_random_centroids(data, k)
     old_centroids = np.zeros(centroids.shape)
-
+    cluster_labels = None
     while iterations < 100 and not (centroids.all() == old_centroids.all()):
         iterations += 1
-
-        distances = get_cluster_distances(data, centroids)
+        distances = cdist(data, centroids)
         cluster_labels = get_cluster_labels(distances)
-
         old_centroids = deepcopy(centroids)
         centroids = recalculate_centroids(data, cluster_labels, k)
-
+    print("Average silhouette width for k =", k, ": ", average_silhouette_width(data, cluster_labels))
     return np.reshape(cluster_labels, len(cluster_labels))
 
 
-def silhouette_width(df, k):
-    point_distances = []
-    data = np.array(list(df.values))
-    print(data)
-    '''for i in range(k):
-        if point_distances.append = np.array([data[j] for j in range(len(data)) if labels[j] == i])
-        new_centroids.append(np.mean(datapoints))
-    return None'''
+def average_silhouette_width(data, labels):
+    # Initialize list to store all points' silhouette widths
+    silhouette_widths = []
+
+    # Combine data and cluster labels into one np array
+    labeled_data = np.append(data, labels, axis=1)
+
+    # Sort data by cluster label, effectively grouping them
+    sorted_data = labeled_data[labeled_data[:, -1].argsort()]
+
+    # Split into nested numpy arrays for each different cluster label
+    # We now have an array of arrays of data within each separate cluster
+    data_by_cluster = np.split(sorted_data, np.where(np.diff(sorted_data[:, -1]))[0] + 1)
+
+    # Remove cluster labels from np array, no longer needed
+    for i in range(len(data_by_cluster)):
+        data_by_cluster[i] = np.delete(data_by_cluster[i], -1, 1)
+
+    for i in range(len(data_by_cluster)):
+        for point in data_by_cluster[i]:
+            # print(point)
+            # Find value of a for each point
+            a = np.mean(cdist(point.reshape(1, -1), data_by_cluster[i]))
+            distance_from_clusters = []
+
+            # Find value of b for each point
+            for j in range(len(data_by_cluster)):
+                if not i == j:
+                    distance_from_clusters.append(np.mean(cdist(point.reshape(1, -1), data_by_cluster[j])))
+            b = np.min(distance_from_clusters)
+
+            # Append all points' silhouette width to list
+            silhouette_widths.append((b-a)/max(a, b))
+
+    # Return mean of list for average silhouette width
+    return np.mean(silhouette_widths)
 
 
 # Read heart disease data from CSV
@@ -72,9 +97,9 @@ heart_disease_df = pd.read_csv("data.csv")
 normalized_df = (heart_disease_df - heart_disease_df.min()) / (heart_disease_df.max() - heart_disease_df.min())
 
 clusters_3 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 3)).values)
-print(clusters_3)
-print("Silhouette width for k = 3: ", silhouette_width(clusters_3, 3), '\n')
+clusters_3.to_csv("clusters_3.csv")
+print(clusters_3, '\n')
 
 clusters_6 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 6)).values)
-print(clusters_6)
-print("Silhouette width for k = 6: ", silhouette_width(clusters_6, 6), '\n')
+clusters_6.to_csv("clusters_6.csv")
+print(clusters_6, '\n')
