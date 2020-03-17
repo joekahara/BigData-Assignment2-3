@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy.spatial.distance import cdist
 from copy import deepcopy
+from sklearn.datasets import make_blobs
 
 
 def get_random_centroids(data, k):
@@ -100,6 +101,11 @@ clusters_3 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 3)).v
 clusters_3.to_csv("clusters_3.csv")
 print(clusters_3, '\n')
 
-clusters_6 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 6)).values)
+clusters_6 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 5)).values)
 clusters_6.to_csv("clusters_6.csv")
 print(clusters_6, '\n')
+
+# Use sklearn to generate dataset w 3 centers to test silhouette width
+X, y = make_blobs(n_samples=100, centers=3, n_features=5)
+print("Testing with manually generated dataset with 3 centers: ")
+k_means(pd.DataFrame(X), 3)
