@@ -39,7 +39,7 @@ def recalculate_centroids(data, labels, k):
 
 def k_means(df, k):
     iterations = 0
-    data = np.array(list(df.values))
+    data = df.to_numpy()
     centroids = get_random_centroids(data, k)
     old_centroids = np.zeros(centroids.shape)
     cluster_labels = None
@@ -92,7 +92,7 @@ def average_silhouette_width(data, labels):
 
 
 # Read heart disease data from CSV
-heart_disease_df = pd.read_csv("data.csv")
+heart_disease_df = pd.read_csv("k-means-data.csv")
 
 # Min-max normalize original dataset to prepare for clustering
 normalized_df = (heart_disease_df - heart_disease_df.min()) / (heart_disease_df.max() - heart_disease_df.min())
@@ -101,7 +101,7 @@ clusters_3 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 3)).v
 clusters_3.to_csv("clusters_3.csv")
 print(clusters_3, '\n')
 
-clusters_6 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 5)).values)
+clusters_6 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 6)).values)
 clusters_6.to_csv("clusters_6.csv")
 print(clusters_6, '\n')
 
