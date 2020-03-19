@@ -3,19 +3,34 @@ import numpy as np
 
 
 def naive_bayes(data):
-    # Split dataset into 5 folds for 5-fold cross validation
-    # Drop n rows during split to make the length of data divisible by 5
-    data = np.split(data[:-(data.shape[0] % 5)], 5)
+
+    # Split DataFrame by class to prepare for stratified cross validation
+    negative_df, positive_df = [x for _, x in data.groupby(data.Class == 'positive')]
+    # Split data for each class into 5 folds
+    negative_folds = np.split(negative_df[:-(negative_df.shape[0] % 5)], 5)
+    positive_folds = np.split(positive_df[:-(positive_df.shape[0] % 5)], 5)
+    # Combine positive and negative folds
+    # We will then have even distribution of classes for stratified 5-fold CV
+    folds = []
+    for i in range(len(negative_folds)):
+        folds.append(pd.concat(list([negative_folds[i], positive_folds[i]])))
+        # Sample all data within fold to shuffle
+        folds[i] = folds[i].sample(frac=1)
 
     # Iterate through folds for cross validation
-    for fold in data:
-        # Create test and training sets
-        test = fold.drop('Subscribed', axis=1)
+    for i in range(len(folds)):
+
+        # Copy original data to work with
+        working_data = folds.copy()
+        # Create training and testing sets
+        test = working_data.pop(i)
+        test = test.drop('Class', axis=1)
         print(test.shape)
-        train = pd.concat(data.all(not fold))
+        train = pd.concat(working_data)
         print(train.shape)
+
         # Find class probabilities
-        class_counts = np.unique(train[:, -1], return_counts=True)
+        class_counts = np.unique(train.Class, return_counts=True)
         total_count = sum(class_counts[1])
         prior_negative = class_counts[1][0] / total_count
         prior_positive = class_counts[1][1] / total_count
@@ -35,7 +50,10 @@ dataset.drop(columns=['Age'], inplace=True)
 # print("Distribution among age categories:")
 # print(df.Age_Group.value_counts().sort_index(), "\n")
 
+# Rename class column to 'class'
+dataset.rename(columns={"Subscribed": "Class"}, inplace=True)
+
 # Convert classes to 'positive' and 'negative'
-dataset.Subscribed.replace(to_replace=['yes', 'no'], value=['positive', 'negative'], inplace=True)
+dataset.Class.replace(to_replace=['yes', 'no'], value=['positive', 'negative'], inplace=True)
 
 naive_bayes(dataset)
