@@ -105,7 +105,7 @@ clusters_6 = normalized_df.assign(cluster=pd.Series(k_means(normalized_df, 6)).v
 clusters_6.to_csv("clusters_6.csv")
 print(clusters_6, '\n')
 
-# Use sklearn to generate dataset w 3 centers to test silhouette width
+# Use scikit-learn function to generate dataset with 3 centers to test silhouette width
 X, y = make_blobs(n_samples=100, centers=3, n_features=5)
 print("Testing with manually generated dataset with 3 centers: ")
 k_means(pd.DataFrame(X), 3)
