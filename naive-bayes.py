@@ -20,22 +20,32 @@ def naive_bayes(data):
     # Iterate through folds for cross validation
     for i in range(len(folds)):
 
-        # Copy original data to work with
+        # Copy original data to work with in the loop
         working_data = folds.copy()
         # Create training and testing sets
         test = working_data.pop(i)
         test = test.drop('Class', axis=1)
-        print(test.shape)
+        # print(test.shape)
         train = pd.concat(working_data)
-        print(train.shape)
+        # print(train.shape)
 
         # Find class probabilities
-        class_counts = np.unique(train.Class, return_counts=True)
-        total_count = sum(class_counts[1])
-        prior_negative = class_counts[1][0] / total_count
-        prior_positive = class_counts[1][1] / total_count
-        print(prior_positive, " ", prior_negative, " ", (prior_negative + prior_positive))
+        class_counts = train.Class.value_counts()
+        # Create dict to track class values and their count
+        class_counts = dict(zip(class_counts.index, class_counts))
+        total_count = sum(class_counts.values())
+        # Calculation of class priors
+        prior_negative = class_counts['negative'] / total_count
+        prior_positive = class_counts['positive'] / total_count
+        # print(prior_positive, " ", prior_negative, " ", (prior_negative + prior_positive))
 
+        # Iterate through features to calculate probabilities with all their values
+        for feature, values in train.iloc[:, :-1].iteritems():
+            value_counts = values.value_counts()
+            # Create dict to track feature values and their counts
+            value_counts = dict(zip(value_counts.index, value_counts))
+
+            print(value_counts)
 
 # Read phone marketing data from CSV file
 dataset = pd.read_csv("naive-bayes-data.csv")

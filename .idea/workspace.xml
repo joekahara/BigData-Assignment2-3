@@ -109,42 +109,69 @@
       <workItem from="1584475986516" duration="3362000" />
       <workItem from="1584479625682" duration="10898000" />
       <workItem from="1584574794646" duration="143000" />
-      <workItem from="1584574948121" duration="17881000" />
+      <workItem from="1584574948121" duration="26761000" />
     </task>
+    <task id="LOCAL-00001" summary="Split properly for stratified CV">
+      <created>1584657386726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584657386726</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Split properly for stratified CV" />
+    <option name="LAST_COMMIT_MESSAGE" value="Split properly for stratified CV" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="1545" y="294" key="CommitChangelistDialog2" timestamp="1584657386064">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1545" y="294" key="CommitChangelistDialog2/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584657386064" />
     <state x="989" y="355" key="FileChooserDialogImpl" timestamp="1584480162698">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="742" y="264" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584323489832" />
     <state x="989" y="355" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584480162698" />
-    <state width="1234" height="368" key="GridCell.Tab.0.bottom" timestamp="1584656447301">
+    <state width="863" height="462" key="GridCell.Tab.0.bottom" timestamp="1584741070024">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1878" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583619071224" />
-    <state width="1234" height="368" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584656447301" />
+    <state width="863" height="462" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584741070024" />
     <state width="1234" height="368" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1584647936635" />
-    <state width="1234" height="368" key="GridCell.Tab.0.center" timestamp="1584656447301">
+    <state width="863" height="462" key="GridCell.Tab.0.center" timestamp="1584741070024">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1878" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583619071224" />
-    <state width="1234" height="368" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584656447301" />
+    <state width="863" height="462" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584741070024" />
     <state width="1234" height="368" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1584647936634" />
-    <state width="1234" height="368" key="GridCell.Tab.0.left" timestamp="1584656447301">
+    <state width="863" height="462" key="GridCell.Tab.0.left" timestamp="1584741070024">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1878" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583619071224" />
-    <state width="1234" height="368" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584656447301" />
+    <state width="863" height="462" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584741070024" />
     <state width="1234" height="368" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1584647936634" />
-    <state width="1234" height="368" key="GridCell.Tab.0.right" timestamp="1584656447301">
+    <state width="863" height="462" key="GridCell.Tab.0.right" timestamp="1584741070024">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1878" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583619071224" />
-    <state width="1234" height="368" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584656447301" />
+    <state width="863" height="462" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1584741070024" />
     <state width="1234" height="368" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1584647936635" />
     <state width="1496" height="491" key="GridCell.Tab.1.bottom" timestamp="1584564642508">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -180,6 +207,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Assignment2$k_means.coverage" NAME="k-means Coverage Results" MODIFIED="1583619058244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BigData_Assignment2_3$k_means.coverage" NAME="k-means Coverage Results" MODIFIED="1584480988992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BigData_Assignment2_3$naive_bayes.coverage" NAME="naive-bayes Coverage Results" MODIFIED="1584656447294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BigData_Assignment2_3$naive_bayes.coverage" NAME="naive-bayes Coverage Results" MODIFIED="1584741070015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
